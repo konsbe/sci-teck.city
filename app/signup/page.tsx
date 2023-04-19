@@ -5,16 +5,18 @@ import styles from "../styles/forms.module.css";
 
 function signup() {
   return (
-    <div>
-      <SignUpForm />
-      <p className={styles.formtext}>
-        already have an acount{" "}
-        <span>
-          <Link href="/login" className={styles.linkText}>
-            Log in
-          </Link>
-        </span>
-      </p>
+    <div className="body-container">
+      <div className="form-container">
+        <SignUpForm />
+        <p className={styles.formtext}>
+          already have an acount{" "}
+          <span>
+            <Link href="/login" className={styles.linkText}>
+              Log in
+            </Link>
+          </span>
+        </p>
+      </div>
     </div>
   );
 }

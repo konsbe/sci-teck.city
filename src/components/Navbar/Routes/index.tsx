@@ -2,6 +2,7 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import "./routes.css";
 import { pages } from "../options";
+import Link from "next/link";
 
 export const RoutingNavLayout = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -27,9 +28,9 @@ export const RoutingNavLayout = () => {
       ref={ref}>
       {pages.map((page, index) => {
         return (
-          <div className="route-element" key={index}>
+          <Link className="route-element" key={index} href={page.path}>
             {page.title}
-          </div>
+          </Link>
         );
       })}
     </div>
