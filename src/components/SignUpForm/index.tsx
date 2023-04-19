@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useCallback, useEffect, useReducer, useState } from "react";
 import ButtonForm from "../Form/ButtonForm";
 import InputForm from "../Form/InputForm";
@@ -20,19 +20,23 @@ const initialState = {
   profilePicture: "",
 };
 const fetchCharacters = async (page: number) => {
-  const promise = await fetch(
-    `https://rickandmortyapi.com/api/character/${page}`
-  ).then((res) => {
-    return res.json();
-  });
-
-  return promise;
+  try {
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character/${page}`
+    );
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("There was a problem fetching data: ", error);
+  }
 };
-
 function SignUpForm() {
-  const [dataForm, setDataForm] = useState<any>();
   const [data, setData] = useState<any>();
   const [formData, setFormData] = useState(initialState);
+  const [page, setPage] = useState<number>(1);
+  const [loading, setLoading] = useState(true);
 
   const handleSubmit = async (e: React.SyntheticEvent | React.FormEvent) => {
     if (!formData.profilePicture) {
@@ -58,56 +62,51 @@ function SignUpForm() {
     }
     console.log("DirectionsCarRounded", formData);
   };
-
-  const googleSuccess = async (res: any) => {
-    const result = res?.profileObj;
-    const token = res?.tokenId;
-  };
-  const googleFailure = (error: Error) => {
-    console.log(error);
-    console.log("Google sign in unsuccessful");
-  };
-
-  const [page, setPage] = useState<number>(1);
-  const increasePage = () => {
-    if (page === 826) {
-      setPage(1);
+  const changeCharacter = (stm: string) => {
+    if (stm === "increment") {
+      if (page === 826) {
+        setPage(1);
+      } else {
+        setPage(page + 1);
+      }
     } else {
-      setPage(page + 1);
+      if (page === 1) {
+        setPage(826);
+      } else {
+        setPage(page - 1);
+      }
     }
-    setFormData({ ...formData, profilePicture: data.image });
   };
-  const decrasePage = () => {
-    if (page === 0) {
-      setPage(826);
-    } else {
-      setPage(page - 1);
-    }
-    setFormData({ ...formData, profilePicture: data.image });
-  };
-  React.useEffect(() => {
-    setData(fetchCharacters(page));
-  }, [page]);
-  React.useEffect(() => {
-    setFormData({
-      ...formData,
-      profilePicture: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+
+
+  useEffect(() => {
+    fetchCharacters(page).then((result) => {
+      setData(result);
+      setLoading(false);
     });
-  }, []);
+  }, [page]);
   return (
     <>
       <div style={{ marginBottom: 20 }}>
         <Profile
           name={data?.name}
-          image={formData.profilePicture ? formData.profilePicture : data?.image}
+          image={
+            formData.profilePicture ? formData.profilePicture : data?.image
+          }
         />
       </div>
       <Container>
         <ButtonGroup>
-          <Button color="success" variant="text" onClick={increasePage}>
+          <Button
+            color="success"
+            variant="text"
+            onClick={() => changeCharacter("increment")}>
             Next Character
           </Button>
-          <Button color="error" variant="text" onClick={decrasePage}>
+          <Button
+            color="error"
+            variant="text"
+            onClick={() => changeCharacter("decrement")}>
             Previous Character
           </Button>
         </ButtonGroup>

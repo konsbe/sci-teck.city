@@ -18,7 +18,7 @@
 }
 .route-element {
     /* position: relative; */
-    /* z-index: 1000; */
+    z-index: 1000;
     margin: 0px 3rem 0px 3rem;
 }
 .route-element:hover {
