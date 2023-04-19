@@ -4,8 +4,11 @@ import Avatar from "@mui/material/Avatar";
 import styles from "./Navbar.module.css";
 import { Button } from "@mui/material";
 import { loginButton, logoutButton } from "./options";
+import { useRouter } from 'next/navigation';
 
 export const Navbar = () => {
+  const router = useRouter();
+  
   return (
     <nav className={styles.navbar}>
       <a>
@@ -13,7 +16,7 @@ export const Navbar = () => {
       </a>
       <a>
         <Button
-        //   onClick={handleCloseNavMenu}
+          onClick={() => router.push('/login')}
           sx={{ my: 2, color: "white" }}
           className={styles.colorButtons}>
           {loginButton[0].icon}

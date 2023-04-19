@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import LoginForm from "@/src/components/LogInForm";
-import styles from "./styles/Form.module.scss";
+import styles from "../styles/forms.module.css";
 
 
 function login() {
@@ -10,12 +10,11 @@ function login() {
       <p className={styles.formtext}>
         not an acount{" "}
         <span>
-          <Link href="/signup">
-            <a className={styles.linkText}>Sign Up</a>
+          <Link href="/signup" className={styles.linkText}>
+            Sign Up
           </Link>
         </span>
       </p>
-
       <LoginForm />
     </div>
   );
