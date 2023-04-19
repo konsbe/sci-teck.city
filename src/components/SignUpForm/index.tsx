@@ -12,7 +12,6 @@ import styles from "@/src/styles/Form.module.css";
 import Profile from "./Profile";
 const initialState = {
   userName: "",
-  lastName: "",
   email: "",
   birthDay: "",
   password: "",
@@ -78,7 +77,6 @@ function SignUpForm() {
     }
   };
 
-
   useEffect(() => {
     fetchCharacters(page).then((result) => {
       setData(result);
@@ -135,21 +133,11 @@ function SignUpForm() {
             placeholder="First Name"
             variant="standard"
             value={formData.userName}
-            autoFocus
+            focused
             sx={{ width: 200, input: { color: "white" } }}
             onChange={handleChange}
           />
         </FormControl>
-        <InputForm
-          label="Last Name"
-          name="lastName"
-          placeholder="Last Name"
-          color="success"
-          variant="standard"
-          value={formData.lastName}
-          sx={{ width: 200, input: { color: "white" } }}
-          onChange={handleChange}
-        />
         <InputForm
           label="email"
           type="email"
