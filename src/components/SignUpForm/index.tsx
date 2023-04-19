@@ -8,9 +8,7 @@ import styled from "@emotion/styled";
 import FileBase from "react-file-base64";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import FormControl from "@mui/material/FormControl";
-// import useStyles from "./styles";
 import styles from "@/src/styles/Form.module.css";
-// import { useRouter } from "next/router";
 import Profile from "./Profile";
 const initialState = {
   userName: "",
@@ -32,8 +30,6 @@ const fetchCharacters = async (page: number) => {
 };
 
 function SignUpForm() {
-  // const router = useRouter();
-  // const classes = useStyles();
   const [dataForm, setDataForm] = useState<any>();
   const [data, setData] = useState<any>();
   const [formData, setFormData] = useState(initialState);

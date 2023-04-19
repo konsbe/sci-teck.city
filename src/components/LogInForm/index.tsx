@@ -5,12 +5,8 @@ import ButtonForm from "../Form/ButtonForm";
 import InputForm from "../Form/InputForm";
 import { Box } from "@mui/material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-
-// import useStyles from "./styles";
-// import { useRouter } from "next/router";
 import Icon from "./icon";
 import styles from "@/src/styles/Form.module.css";
-import { IGoogleUserProps, IUserProps, IPropData } from "./interface";
 
 const initialState = {
   email: "",
@@ -18,8 +14,7 @@ const initialState = {
 };
 
 function LoginForm(): JSX.Element {
-  // const router = useRouter();
-  // const classes = useStyles();
+
   const [data, setData] = useState<any>();
   const [formData, setFormData] = useState(initialState);
 
