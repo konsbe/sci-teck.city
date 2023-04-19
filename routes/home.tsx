@@ -14,7 +14,7 @@ export default function Home() {
       <div className={styles.container}>
         <div className={styles.cubeInfo}>
           <div>
-            <button
+            {/* <button
               onClick={() =>
                 setCurrentIndex(currentIndex === 0 ? 6 : currentIndex - 1)
               }>
@@ -25,7 +25,7 @@ export default function Home() {
                 setCurrentIndex(currentIndex === 6 ? 0 : currentIndex + 1)
               }>
               Next
-            </button>
+            </button> */}
           </div>
           <Cube
             isModal={false}
@@ -49,7 +49,17 @@ export default function Home() {
           />
         </div>
         <div className={styles.homeDescription}>
-          <div
+          <div className="scrollbar-container">
+            <div className="scrollbar-content">
+              <p className="scroll-text">{homeOptions[0]}</p>
+              <p className="scroll-text">{homeOptions[1]}</p>
+              <p className="scroll-text">{homeOptions[2]}</p>
+              <p className="scroll-text">{homeOptions[3]}</p>
+              <p className="scroll-text">{homeOptions[4]}</p>
+              <p className="scroll-text">{homeOptions[5]}</p>
+            </div>
+          </div>
+          {/* <div
             className="carousel-container"
             style={{ height: "400px", position: "relative" }}>
             {homeOptions.map((item, index) => {
@@ -69,7 +79,7 @@ export default function Home() {
                 </div>
               );
             })}
-          </div>
+          </div> */}
           <p>https://github.com/konsbe</p>
         </div>
       </div>
