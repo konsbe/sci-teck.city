@@ -96,16 +96,16 @@ function SignUpForm() {
       <Container>
         <ButtonGroup>
           <Button
-            color="success"
-            variant="text"
-            onClick={() => changeCharacter("increment")}>
-            Next Character
-          </Button>
-          <Button
             color="error"
             variant="text"
             onClick={() => changeCharacter("decrement")}>
             Previous Character
+          </Button>
+          <Button
+            color="success"
+            variant="text"
+            onClick={() => changeCharacter("increment")}>
+            Next Character
           </Button>
         </ButtonGroup>
       </Container>

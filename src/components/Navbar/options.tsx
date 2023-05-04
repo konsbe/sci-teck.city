@@ -30,7 +30,7 @@ export const pages = [
   },
   {
     title: "ABOUT",
-    path: "/about",
+    path: "/chat-room",
     icon: <InfoIcon />,
   },
   {
